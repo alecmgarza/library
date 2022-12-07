@@ -19,4 +19,17 @@ function displayBooks() {
     }
 }
 
+const btn = document.querySelector('button');
+const form = document.querySelector('form');
+
+btn.onclick = function() {
+    form.style.display = 'block';
+}
+
+const closeForm = document.querySelector('button#closeForm');
+
+closeForm.onclick = function() {
+    form.style.display = 'none';
+}
+
 displayBooks();
