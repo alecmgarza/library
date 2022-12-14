@@ -1,4 +1,4 @@
-let myLibrary = ['A', 'B', 'C'];
+let myLibrary = [];
 
 function Book(title, author, pages, beenRead) {
     this.title = title
@@ -7,13 +7,13 @@ function Book(title, author, pages, beenRead) {
     this.beenRead = beenRead
 }
 
-function displayBooks() {
+/*function displayBooks() {
     for (let i = 0; i < myLibrary.length; i++) {
         const div = document.createElement('div');
         document.body.appendChild(div);
-        div.textContent = myLibrary[i];
+        div.textContent = JSON.stringify(myLibrary[i], null, 4);
     }
-}
+}*/
 
 const btn = document.querySelector('button');
 const form = document.querySelector('form');
@@ -32,15 +32,27 @@ form.onsubmit = function(event) {
 
     let newBook = new Book(title, author, pages, beenRead)
     myLibrary.push(newBook);
+
+    function displayBooks() {
+        for (let i = 0; i < myLibrary.length; i++) {
+            const div = document.createElement('div');
+            document.body.appendChild(div);
+            div.textContent = '';
+            div.textContent = JSON.stringify(myLibrary[i], null, 4);
+        }
+    }
+
+    displayBooks();
 }
 
 const closeForm = document.querySelector('button#closeForm');
 
-closeForm.onclick = function() {
+closeForm.onclick = function(event) {
+    event.preventDefault();
     form.style.display = 'none';
 }
 
-displayBooks();
+//displayBooks();
 
 // figure out how to display array of objects using JSON.stringify
 // how does that work with my for loop?
