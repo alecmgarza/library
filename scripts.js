@@ -7,16 +7,11 @@ function Book(title, author, pages, beenRead) {
     this.beenRead = beenRead
 }
 
-/*function displayBooks() {
-    for (let i = 0; i < myLibrary.length; i++) {
-        const div = document.createElement('div');
-        document.body.appendChild(div);
-        div.textContent = JSON.stringify(myLibrary[i], null, 4);
-    }
-}*/
-
 const btn = document.querySelector('button');
 const form = document.querySelector('form');
+const booklist = document.getElementById('booklist');
+const div = document.createElement('div');
+booklist.appendChild(div);
 
 btn.onclick = function() {
     form.style.display = 'block';
@@ -33,16 +28,11 @@ form.onsubmit = function(event) {
     let newBook = new Book(title, author, pages, beenRead)
     myLibrary.push(newBook);
 
-    function displayBooks() {
-        for (let i = 0; i < myLibrary.length; i++) {
-            const div = document.createElement('div');
-            document.body.appendChild(div);
-            div.textContent = '';
-            div.textContent = JSON.stringify(myLibrary[i], null, 4);
-        }
-    }
-
     displayBooks();
+}
+
+function displayBooks() {
+        div.textContent = JSON.stringify(myLibrary, null, 4);
 }
 
 const closeForm = document.querySelector('button#closeForm');
@@ -52,8 +42,4 @@ closeForm.onclick = function(event) {
     form.style.display = 'none';
 }
 
-//displayBooks();
-
-// figure out how to display array of objects using JSON.stringify
-// how does that work with my for loop?
-// figure out how to refresh display of objects when they are added or removed
+// successfully display updated array, now need to create cards with book info
