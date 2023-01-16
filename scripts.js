@@ -10,8 +10,6 @@ function Book(title, author, pages, beenRead) {
 const btn = document.querySelector('button');
 const form = document.querySelector('form');
 const booklist = document.getElementById('booklist');
-const div = document.createElement('div');
-booklist.appendChild(div);
 
 btn.onclick = function() {
     form.style.display = 'block';
@@ -31,8 +29,30 @@ form.onsubmit = function(event) {
     displayBooks();
 }
 
+/*function displayBooks() {
+    const div = document.createElement('div');
+    booklist.appendChild(div);
+    div.textContent = JSON.stringify(myLibrary, null, 4);
+}*/
+
 function displayBooks() {
-        div.textContent = JSON.stringify(myLibrary, null, 4);
+    for (i = 0; i < myLibrary.length; i++) {
+        const div = document.createElement('div');
+        div.className = 'card';
+        booklist.appendChild(div);
+        const title = document.createElement('h1');
+        div.appendChild(title);
+        title.textContent = myLibrary[i].title;
+        const author = document.createElement('div');
+        div.appendChild(author);
+        author.textContent = myLibrary[i].author;
+        const pages = document.createElement('div');
+        div.appendChild(pages);
+        pages.textContent = myLibrary[i].pages;
+        const beenRead = document.createElement('div');
+        div.appendChild(beenRead);
+        beenRead.textContent = myLibrary[i].beenRead;
+    }
 }
 
 const closeForm = document.querySelector('button#closeForm');
