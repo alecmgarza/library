@@ -29,12 +29,6 @@ form.onsubmit = function(event) {
     displayBooks();
 }
 
-/*function displayBooks() {
-    const div = document.createElement('div');
-    booklist.appendChild(div);
-    div.textContent = JSON.stringify(myLibrary, null, 4);
-}*/
-
 function displayBooks() {
     for (i = 0; i < myLibrary.length; i++) {
         const div = document.createElement('div');
@@ -48,7 +42,7 @@ function displayBooks() {
         author.textContent = myLibrary[i].author;
         const pages = document.createElement('div');
         div.appendChild(pages);
-        pages.textContent = myLibrary[i].pages;
+        pages.textContent = myLibrary[i].pages + ' pages';
         const beenRead = document.createElement('div');
         div.appendChild(beenRead);
         beenRead.textContent = myLibrary[i].beenRead;
