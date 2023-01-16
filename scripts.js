@@ -26,6 +26,7 @@ form.onsubmit = function(event) {
     let newBook = new Book(title, author, pages, beenRead)
     myLibrary.push(newBook);
 
+    form.reset();
     displayBooks();
 }
 
@@ -60,7 +61,6 @@ closeForm.onclick = function(event) {
 // MUST DO:
 // style card nicely, add a yes/no switch for beenRead
 // figure out problem with focus vs focus-visible on input fields
-// clear input fields on submit
 // add an option to remove a book from grid
 
 // BIG IDEAS:
