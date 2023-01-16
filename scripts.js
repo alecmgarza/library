@@ -30,6 +30,7 @@ form.onsubmit = function(event) {
 }
 
 function displayBooks() {
+    booklist.innerHTML = '';
     for (i = 0; i < myLibrary.length; i++) {
         const div = document.createElement('div');
         div.className = 'card';
@@ -37,13 +38,13 @@ function displayBooks() {
         const title = document.createElement('h1');
         div.appendChild(title);
         title.textContent = myLibrary[i].title;
-        const author = document.createElement('div');
+        const author = document.createElement('p');
         div.appendChild(author);
         author.textContent = myLibrary[i].author;
-        const pages = document.createElement('div');
+        const pages = document.createElement('p');
         div.appendChild(pages);
         pages.textContent = myLibrary[i].pages + ' pages';
-        const beenRead = document.createElement('div');
+        const beenRead = document.createElement('p');
         div.appendChild(beenRead);
         beenRead.textContent = myLibrary[i].beenRead;
     }
@@ -56,4 +57,13 @@ closeForm.onclick = function(event) {
     form.style.display = 'none';
 }
 
-// successfully display updated array, now need to create cards with book info
+// MUST DO:
+// style card nicely, add a yes/no switch for beenRead
+// figure out problem with focus vs focus-visible on input fields
+// clear input fields on submit
+// add an option to remove a book from grid
+
+// BIG IDEAS:
+// add a sort by option (a-z title/author, most recently added, # of pages)
+// filter by read and not read
+// animations for cards and form
