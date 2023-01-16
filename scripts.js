@@ -36,18 +36,34 @@ function displayBooks() {
         const div = document.createElement('div');
         div.className = 'card';
         booklist.appendChild(div);
+
         const title = document.createElement('h1');
         div.appendChild(title);
         title.textContent = myLibrary[i].title;
+
         const author = document.createElement('p');
         div.appendChild(author);
         author.textContent = myLibrary[i].author;
+
         const pages = document.createElement('p');
         div.appendChild(pages);
         pages.textContent = myLibrary[i].pages + ' pages';
+
         const beenRead = document.createElement('p');
         div.appendChild(beenRead);
         beenRead.textContent = myLibrary[i].beenRead;
+
+        const toggle = document.createElement('label');
+        toggle.className = 'switch';
+        div.appendChild(toggle);
+
+        const input = document.createElement('input');
+        input.type = 'checkbox';
+        toggle.appendChild(input);
+
+        const span = document.createElement('span');
+        span.className = 'slider round';
+        toggle.appendChild(span);
     }
 }
 
@@ -59,7 +75,8 @@ closeForm.onclick = function(event) {
 }
 
 // MUST DO:
-// style card nicely, add a yes/no switch for beenRead
+// style card nicely
+// set up toggle switch to match beenRead property and be able to change property in array
 // figure out problem with focus vs focus-visible on input fields
 // add an option to remove a book from grid
 
