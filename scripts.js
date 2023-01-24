@@ -21,7 +21,7 @@ form.onsubmit = function(event) {
     let title = document.getElementById('title').value;
     let author = document.getElementById('author').value;
     let pages = document.getElementById('pages').value;
-    let beenRead = document.getElementById('beenRead').value;
+    let beenRead = document.querySelector('input[name="read"]:checked').value;
 
     let newBook = new Book(title, author, pages, beenRead)
     myLibrary.push(newBook);
@@ -64,6 +64,13 @@ function displayBooks() {
         const span = document.createElement('span');
         span.className = 'slider round';
         toggle.appendChild(span);
+
+        if (myLibrary[i].beenRead == 'yes') {
+            input.checked = true;
+        } else {
+            input.checked = false;
+        }
+
     }
 }
 
@@ -75,7 +82,8 @@ closeForm.onclick = function(event) {
 }
 
 // MUST DO:
-// style card nicely
+// get card to display beenRead property correctly (how to get value of radio button)
+// style card nicely (use SVG icons and push info to the left)
 // set up toggle switch to match beenRead property and be able to change property in array
 // figure out problem with focus vs focus-visible on input fields
 // add an option to remove a book from grid
