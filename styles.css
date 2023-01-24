@@ -55,17 +55,30 @@ div.card {
     background-color: #151D25;
     color: white;
     border-radius: 10px;
-    text-align: center;
     box-shadow: 1px 1px 5px #060800;
 }
 
 div.card h1 {
     font-size: 36px;
+    text-align: center;
 }
 
 div.card p {
     font-size: 20px;
-    color: #6871F4;
+    color: white;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.card {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    grid-template-rows: 80px;
+}
+
+.card-header {
+    height: 40px;
 }
 
 button {
@@ -75,6 +88,11 @@ button {
     border-radius: 5px;
     padding: 10px;
     font-size: 16px;
+}
+
+svg {
+    color: #6871F4;
+    vertical-align: bottom;
 }
 
 /* code for toggle switch was grabbed from https://www.w3schools.com/howto/howto_css_switch.asp */

@@ -37,25 +37,39 @@ function displayBooks() {
         div.className = 'card';
         booklist.appendChild(div);
 
+        const cardHeader = document.createElement('div');
+        cardHeader.className = 'card-header';
+        div.appendChild(cardHeader);
+
         const title = document.createElement('h1');
-        div.appendChild(title);
+        cardHeader.appendChild(title);
         title.textContent = myLibrary[i].title;
 
+        const cardContent = document.createElement('div');
+        cardContent.className = 'card-content';
+        div.appendChild(cardContent);
+
         const author = document.createElement('p');
-        div.appendChild(author);
-        author.textContent = myLibrary[i].author;
+        cardContent.appendChild(author);
+        author.innerHTML = `<svg style="width:24px;height:24px;" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M12,4A4,4 0 0,1 16,8A4,4 0 0,1 12,12A4,4 0 0,1 8,8A4,4 0 0,1 12,4M12,14C16.42,14 20,15.79 20,18V20H4V18C4,15.79 7.58,14 12,14Z" />
+            </svg> ` + myLibrary[i].author;
 
         const pages = document.createElement('p');
-        div.appendChild(pages);
-        pages.textContent = myLibrary[i].pages + ' pages';
-
-        const beenRead = document.createElement('p');
-        div.appendChild(beenRead);
-        beenRead.textContent = myLibrary[i].beenRead;
+        cardContent.appendChild(pages);
+        pages.innerHTML = `<svg style="width:24px;height:24px;" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M5.41,21L6.12,17H2.12L2.47,15H6.47L7.53,9H3.53L3.88,7H7.88L8.59,3H10.59L9.88,7H15.88L16.59,3H18.59L17.88,7H21.88L21.53,9H17.53L16.47,15H20.47L20.12,17H16.12L15.41,21H13.41L14.12,17H8.12L7.41,21H5.41M9.53,9L8.47,15H14.47L15.53,9H9.53Z" />
+            </svg> ` + myLibrary[i].pages + ' pages';
+        
+        const read = document.createElement('p');
+        read.innerHTML = `<svg style="width:24px;height:24px" viewBox="0 0 24 24">
+            <path fill="currentColor" d="M16.75 22.16L14 19.16L15.16 18L16.75 19.59L20.34 16L21.5 17.41L16.75 22.16M6 22C4.89 22 4 21.1 4 20V4C4 2.89 4.89 2 6 2H7V9L9.5 7.5L12 9V2H18C19.1 2 20 2.89 20 4V13.34C19.37 13.12 18.7 13 18 13C14.69 13 12 15.69 12 19C12 20.09 12.29 21.12 12.8 22H6Z" />
+            </svg> ` + 'Read? ';
+        cardContent.appendChild(read);
 
         const toggle = document.createElement('label');
         toggle.className = 'switch';
-        div.appendChild(toggle);
+        read.appendChild(toggle);
 
         const input = document.createElement('input');
         input.type = 'checkbox';
@@ -70,7 +84,6 @@ function displayBooks() {
         } else {
             input.checked = false;
         }
-
     }
 }
 
@@ -82,7 +95,6 @@ closeForm.onclick = function(event) {
 }
 
 // MUST DO:
-// get card to display beenRead property correctly (how to get value of radio button)
 // style card nicely (use SVG icons and push info to the left)
 // set up toggle switch to match beenRead property and be able to change property in array
 // figure out problem with focus vs focus-visible on input fields
