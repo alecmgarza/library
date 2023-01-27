@@ -66,7 +66,7 @@ div.card h1 {
 div.card p {
     font-size: 20px;
     color: white;
-    text-align: left;
+    text-align: center;
     vertical-align: middle;
 }
 
@@ -74,11 +74,19 @@ div.card p {
     display: grid;
     justify-content: center;
     align-items: center;
-    grid-template-rows: 80px;
+    grid-template-rows: 30% 70%;
+    grid-template-columns: 50% 50%;
+    position: relative;
 }
 
 .card-header {
-    height: 40px;
+    grid-row: 1;
+    grid-column: -1 / 1;
+}
+
+.card-content {
+    grid-row: 2;
+    grid-column: -1 / 1;
 }
 
 button {
@@ -93,6 +101,22 @@ button {
 svg {
     color: #6871F4;
     vertical-align: bottom;
+}
+
+.remove {
+    background-color: #950101;
+    border-radius: 50%;
+    height: 25px;
+    width: 25px;
+    padding: 0;
+    text-align: center;
+    justify-content: center;
+    grid-row: 1;
+    grid-column: 2;
+    top: 0;
+    right: 0;
+    position: absolute;
+    margin: 6px 6px 0px 0px;
 }
 
 /* code for toggle switch was grabbed from https://www.w3schools.com/howto/howto_css_switch.asp */

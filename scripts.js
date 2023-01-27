@@ -30,16 +30,23 @@ form.onsubmit = function(event) {
     displayBooks();
 }
 
+const card = document.createElement('div');
+const button = document.createElement('button');
+
 function displayBooks() {
     booklist.innerHTML = '';
     for (i = 0; i < myLibrary.length; i++) {
-        const div = document.createElement('div');
-        div.className = 'card';
-        booklist.appendChild(div);
+        card.className = 'card';
+        card.dataset.indexNumber = i;
+        booklist.appendChild(card);
+
+        button.className = 'remove';
+        button.textContent = 'x';
+        card.appendChild(button);
 
         const cardHeader = document.createElement('div');
         cardHeader.className = 'card-header';
-        div.appendChild(cardHeader);
+        card.appendChild(cardHeader);
 
         const title = document.createElement('h1');
         cardHeader.appendChild(title);
@@ -47,7 +54,7 @@ function displayBooks() {
 
         const cardContent = document.createElement('div');
         cardContent.className = 'card-content';
-        div.appendChild(cardContent);
+        card.appendChild(cardContent);
 
         const author = document.createElement('p');
         cardContent.appendChild(author);
@@ -94,8 +101,13 @@ closeForm.onclick = function(event) {
     form.style.display = 'none';
 }
 
+button.onclick = function() {
+    myLibrary.splice(card.dataset.indexNumber, 1);
+    displayBooks();
+}
+
 // MUST DO:
-// style card nicely (use SVG icons and push info to the left)
+// how to center content with long titles
 // set up toggle switch to match beenRead property and be able to change property in array
 // figure out problem with focus vs focus-visible on input fields
 // add an option to remove a book from grid
