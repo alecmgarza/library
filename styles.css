@@ -117,6 +117,7 @@ svg {
     right: 0;
     position: absolute;
     margin: 6px 6px 0px 0px;
+    display: none;
 }
 
 /* code for toggle switch was grabbed from https://www.w3schools.com/howto/howto_css_switch.asp */

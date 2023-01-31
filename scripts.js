@@ -7,11 +7,11 @@ function Book(title, author, pages, beenRead) {
     this.beenRead = beenRead
 }
 
-const btn = document.querySelector('button');
+const newBookBtn = document.querySelector('button#newBook');
 const form = document.querySelector('form');
 const booklist = document.getElementById('booklist');
 
-btn.onclick = function() {
+newBookBtn.onclick = function() {
     form.style.display = 'block';
 }
 
@@ -30,19 +30,18 @@ form.onsubmit = function(event) {
     displayBooks();
 }
 
-const card = document.createElement('div');
-const button = document.createElement('button');
-
 function displayBooks() {
     booklist.innerHTML = '';
     for (i = 0; i < myLibrary.length; i++) {
+        const card = document.createElement('div');
         card.className = 'card';
         card.dataset.indexNumber = i;
         booklist.appendChild(card);
 
-        button.className = 'remove';
-        button.textContent = 'x';
-        card.appendChild(button);
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'remove';
+        removeBtn.textContent = 'x';
+        card.appendChild(removeBtn);
 
         const cardHeader = document.createElement('div');
         cardHeader.className = 'card-header';
@@ -91,26 +90,33 @@ function displayBooks() {
         } else {
             input.checked = false;
         }
+
+        card.onmouseenter = function() {
+            removeBtn.style.display = 'block';
+        }
+
+        card.onmouseleave = function() {
+            removeBtn.style.display = 'none';
+        }
+
+        removeBtn.onclick = function() {
+            myLibrary.splice(card.dataset.indexNumber, 1);
+            displayBooks();
+        }
     }
 }
 
-const closeForm = document.querySelector('button#closeForm');
+const closeFormBtn = document.querySelector('button#closeForm');
 
-closeForm.onclick = function(event) {
+closeFormBtn.onclick = function(event) {
     event.preventDefault();
     form.style.display = 'none';
-}
-
-button.onclick = function() {
-    myLibrary.splice(card.dataset.indexNumber, 1);
-    displayBooks();
 }
 
 // MUST DO:
 // how to center content with long titles
 // set up toggle switch to match beenRead property and be able to change property in array
 // figure out problem with focus vs focus-visible on input fields
-// add an option to remove a book from grid
 
 // BIG IDEAS:
 // add a sort by option (a-z title/author, most recently added, # of pages)
