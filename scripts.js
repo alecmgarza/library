@@ -21,7 +21,12 @@ form.onsubmit = function(event) {
     let title = document.getElementById('title').value;
     let author = document.getElementById('author').value;
     let pages = document.getElementById('pages').value;
-    let beenRead = document.querySelector('input[name="read"]:checked').value;
+
+    if (document.querySelector('input[name="read"]:checked').value == 'yes') {
+        beenRead = true;
+    } else {
+        beenRead = false;
+    }
 
     let newBook = new Book(title, author, pages, beenRead)
     myLibrary.push(newBook);
@@ -32,6 +37,7 @@ form.onsubmit = function(event) {
 
 function displayBooks() {
     booklist.innerHTML = '';
+
     for (i = 0; i < myLibrary.length; i++) {
         const card = document.createElement('div');
         card.className = 'card';
@@ -84,8 +90,8 @@ function displayBooks() {
         const span = document.createElement('span');
         span.className = 'slider round';
         toggle.appendChild(span);
-
-        if (myLibrary[i].beenRead == 'yes') {
+        
+        if (myLibrary[i].beenRead == true) {
             input.checked = true;
         } else {
             input.checked = false;
@@ -102,6 +108,10 @@ function displayBooks() {
         removeBtn.onclick = function() {
             myLibrary.splice(card.dataset.indexNumber, 1);
             displayBooks();
+        }
+
+        span.onclick = function() {
+            myLibrary[card.dataset.indexNumber].beenRead = !myLibrary[card.dataset.indexNumber].beenRead;
         }
     }
 }
